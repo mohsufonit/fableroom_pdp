@@ -45,6 +45,61 @@ body{font-family:var(--ff-b);background:var(--bg);color:var(--ink);line-height:1
 /* Dynamic rotating badge fade (#5) */
 .b-dyn{transition:opacity .28s ease}
 .b-dyn.fade{opacity:0}
+/* ===== PHASE 3: BUY CLUSTER ===== */
+/* #11 competitor price comparison */
+.comp-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:2px 0 8px;font-size:12.5px;color:var(--ink-3)}
+.comp-row .comp-retail{text-decoration:line-through;font-weight:500}
+.comp-row .comp-save{font-size:11.5px;font-weight:700;color:var(--green);background:rgba(16,132,116,.09);padding:3px 9px;border-radius:100px}
+.price-info-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:none;font-family:var(--ff-b);font-size:11.5px;color:var(--bronze);font-weight:600;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px;margin-bottom:10px}
+/* #13 trust badge click */
+.trust4 .t4{cursor:pointer;transition:background .15s,border-color .15s}
+.trust4 .t4:hover{background:var(--surface-2);border-color:var(--bronze)}
+/* trust + price bottom-sheet modals */
+.trust-modal,.price-modal{position:fixed;inset:0;z-index:95;background:rgba(44,40,34,.44);backdrop-filter:blur(3px);display:none;align-items:flex-end;justify-content:center}
+.trust-modal.show,.price-modal.show{display:flex}
+.tm-card,.pm-card{background:var(--bg);border-radius:16px 16px 0 0;width:100%;max-width:480px;padding:12px 22px 36px;position:relative;box-shadow:0 -8px 32px rgba(0,0,0,.12)}
+.tm-drag,.pm-drag{width:36px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 18px}
+.tm-icon{color:var(--bronze);margin-bottom:10px;display:block}
+.tm-card h4{font-size:20px;margin-bottom:9px}
+.tm-card p,.pm-note{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.tm-card p+p{margin-top:6px}
+.tm-close,.pm-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:var(--surface-2);border:none;font-size:20px;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+/* #19 price modal specifics */
+.pm-card h4{font-size:19px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line-2)}
+.pm-row{display:flex;justify-content:space-between;padding:8px 0;font-size:13px;border-bottom:1px solid var(--line-2);color:var(--ink-2)}
+.pm-row b{color:var(--ink);font-weight:600}
+.pm-total{display:flex;justify-content:space-between;padding:12px 0 0;margin-top:4px;border-top:2px solid var(--line);font-weight:700;font-size:14px;color:var(--heading)}
+.pm-note{font-size:12px;margin-top:12px;background:var(--surface-2);border-radius:8px;padding:10px 13px}
+/* #14 delivery strip */
+.delivstrip2{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:var(--surface);margin-bottom:14px}
+.dstrip-row{display:flex;align-items:center;gap:10px;padding:10px 14px}
+.dstrip-row+.dstrip-row{border-top:1px solid var(--line-2)}
+.dstrip-row svg{color:var(--bronze);flex-shrink:0}
+.dstrip-info b{display:block;font-size:13px;color:var(--ink);line-height:1.2}
+.dstrip-info small{font-size:11.5px;color:var(--ink-3)}
+.dstrip-tag{font-size:11px;font-weight:700;color:var(--green);background:rgba(16,132,116,.09);padding:2px 7px;border-radius:100px;margin-left:auto;flex-shrink:0;white-space:nowrap}
+/* #21 dimension strip redo */
+.dimstrip2{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:12px;overflow:hidden;margin-bottom:4px}
+.dv{background:var(--surface);padding:13px 10px 10px;display:flex;flex-direction:column;align-items:center;gap:1px}
+.dv-num{display:flex;align-items:baseline;gap:2px}
+.dv-n{font-size:25px;font-weight:700;color:var(--heading);line-height:1;letter-spacing:-.02em}
+.dv-u{font-size:11px;font-weight:600;color:var(--ink-3);margin-top:1px}
+.dv-l{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.dv-scale{display:flex;align-items:center;justify-content:center;gap:5px;font-size:11px;font-weight:600;color:var(--bronze);cursor:pointer;background:none;border:none;font-family:var(--ff-b);padding:6px 0 8px;width:100%;text-align:center}
+/* simplified paypanel - shown above CTA */
+.paypanel-simple{border:1px solid var(--line-2);border-radius:14px;background:var(--surface);overflow:hidden;margin-bottom:12px}
+.pps-offer{display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:13px;color:var(--ink);border-bottom:1px solid var(--line-2)}
+.pps-offer svg{color:var(--green);flex-shrink:0}
+.pps-offer code{font-family:var(--ff-b);font-weight:700;color:var(--bronze);background:var(--surface-2);padding:2px 7px;border-radius:4px;letter-spacing:.04em}
+.pps-copy{margin-left:auto;flex-shrink:0;border:1px solid var(--line-2);background:var(--surface);border-radius:6px;padding:4px 10px;font-size:11.5px;font-weight:700;color:var(--bronze);cursor:pointer}
+.pps-klarna{display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:13px;color:var(--ink);border-bottom:1px solid var(--line-2)}
+.pps-klarna svg{color:var(--bronze);flex-shrink:0}
+.pps-klarna .klarna-tag{margin-left:auto}
+.pps-methods{display:flex;flex-wrap:wrap;gap:5px;padding:10px 14px 11px}
+/* #15 scroll-more pill */
+.ts-more{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:11px;font-weight:600;color:var(--ink-3);background:var(--surface-2);border:1px solid var(--line-2);border-radius:100px;padding:4px 11px;transition:opacity .25s;cursor:default;user-select:none}
+.ts-more.hidden{opacity:0;pointer-events:none}
+.ts-more svg{color:var(--bronze)}
 a{color:inherit}
 button{font-family:inherit;cursor:pointer}
 /* headings - the ONLY serif elements (matches brand h1–h6) */
@@ -78,7 +133,7 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 
 /* GALLERY (image-led; controls BELOW image) */
 .gallery{margin-bottom:20px}
-.g-main{position:relative;background:var(--surface);border-radius:var(--radius);overflow:hidden;height:43vh;max-height:396px;min-height:333px}
+.g-main{position:relative;background:var(--surface);border-radius:var(--radius);overflow:hidden;height:45vh;max-height:415px;min-height:350px}
 .g-main img{width:100%;height:100%;object-fit:cover}
 .g-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;z-index:2;transition:opacity .35s ease}
 .g-badges.dim{opacity:.12;pointer-events:none}
@@ -87,17 +142,23 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 .b-best{background:var(--heading);color:#f3ede4}
 .b-pre{background:#fff;color:var(--bronze);border:1px solid var(--bronze)}
 
-/* THUMBNAIL STRIP - below hero; image IS the label (#2, #15) */
-.thumbstrip{position:relative;margin-top:8px}
-.thumbs{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+/* THUMBNAIL STRIP - below hero; image + text label (#2, #15) */
+.thumbstrip{position:relative;margin-top:9px}
+.thumbs{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
 .thumbs::-webkit-scrollbar{display:none}
-.thumb{flex:0 0 70px;height:54px;border-radius:6px;overflow:hidden;border:2px solid var(--line);background:var(--surface-2);padding:0;cursor:pointer;opacity:.68;transition:opacity .2s,border-color .2s,box-shadow .2s}
-.thumb.active{opacity:1;border-color:var(--bronze);box-shadow:0 0 0 1px var(--bronze)}
-.thumb:hover:not(.active){opacity:1;border-color:var(--ink-3)}
-.thumb img{width:100%;height:100%;object-fit:cover}
-/* scroll indicator arrow (#15) */
-.ts-arrow{position:absolute;right:0;top:0;bottom:0;width:32px;background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,.96) 55%);display:flex;align-items:center;justify-content:flex-end;padding-right:3px;pointer-events:none;transition:opacity .25s}
-.ts-arrow.hidden{opacity:0}
+.thumb{flex:0 0 72px;display:flex;flex-direction:column;align-items:center;gap:4px;border:none;background:none;padding:0;cursor:pointer;opacity:.64;transition:opacity .18s}
+.thumb.active{opacity:1}
+.th-img{width:72px;height:52px;border-radius:6px;overflow:hidden;border:2px solid var(--line);transition:border-color .18s,box-shadow .18s;flex-shrink:0}
+.thumb.active .th-img{border-color:var(--bronze);box-shadow:0 0 0 1px var(--bronze)}
+.thumb:hover:not(.active){opacity:.9}
+.thumb:hover:not(.active) .th-img{border-color:var(--ink-3)}
+.th-img img{width:100%;height:100%;object-fit:cover;display:block}
+.th-lbl{font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);line-height:1;white-space:nowrap;text-align:center}
+.thumb.active .th-lbl{color:var(--bronze)}
+/* scroll peek arrow (#15) - pill above stickybar */
+.ts-more{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:11px;font-weight:600;color:var(--ink-3);background:var(--surface-2);border:1px solid var(--line-2);border-radius:100px;padding:4px 10px;transition:opacity .25s;cursor:default}
+.ts-more.hidden{opacity:0;pointer-events:none}
+.ts-more svg{color:var(--bronze)}
 
 /* PRODUCT INFO (order tuned so title+price+CTA hit first fold) */
 .pinfo{padding-top:2px}
@@ -559,8 +620,10 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
   .gallery{position:sticky;top:104px}
   .g-main{height:auto;max-height:none;aspect-ratio:1/1;min-height:0}
   .thumbs{padding:0}
-  .thumb{flex:0 0 80px;height:62px}
-  .thumb:hover:not(.active){opacity:1;border-color:var(--ink-3)}
+  .thumb{flex:0 0 84px;gap:5px}
+  .th-img{width:84px;height:62px}
+  .th-lbl{font-size:9px}
+  .thumb:hover:not(.active){opacity:.9}
   .pinfo{position:sticky;top:84px}
   .title{font-size:38px}.p-now{font-size:36px}
 
@@ -636,14 +699,18 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
     <div class="gallery">
       <div class="g-main">
         <div class="g-badges">
-          <span class="badge b-pre b-dyn" id="dynbadge">Pre-Order · Late Sept</span>
+          <span class="badge b-best">One of a kind</span>
+          <span class="badge b-pre b-dyn" id="dynbadge">Pre-Order</span>
         </div>
         <img id="gimg" src="./assets-web/TRCB00001A-CWWpi4Ek.jpg" alt="Astra Two Door Cabinet styled in a living room">
       </div>
-      <!-- THUMBNAIL STRIP - below hero; each image is its own label (#2, #3, #15) -->
+      <!-- THUMBNAIL STRIP - below hero; image + label (#2, #3, #15) -->
       <div class="thumbstrip">
         <div class="thumbs" id="gthumbs" role="tablist" aria-label="Gallery views"></div>
-        <div class="ts-arrow" id="tsarrow" aria-hidden="true"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+        <button class="ts-more hidden" id="tsmore" onclick="gthumbs.scrollBy({left:160,behavior:'smooth'})">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          more images
+        </button>
       </div>
     </div>
 
@@ -684,7 +751,166 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
         </div>
       </div>
 
-      <!-- DIMENSION STRIP -->
+      <!-- DIMENSION STRIP REDO (#21) -->
+      <div class="dimstrip2" aria-label="Dimensions">
+        <div class="dv"><div class="dv-num"><span class="dv-n">104</span><span class="dv-u">cm</span></div><span class="dv-l">Wide</span></div>
+        <div class="dv"><div class="dv-num"><span class="dv-n">82</span><span class="dv-u">cm</span></div><span class="dv-l">Tall</span></div>
+        <div class="dv"><div class="dv-num"><span class="dv-n">46</span><span class="dv-u">cm</span></div><span class="dv-l">Deep</span></div>
+      </div>
+      <button class="dv-scale" onclick="show(6)" aria-label="See scale reference image">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        See in scale
+      </button>
+
+      <!-- PRICE BLOCK + COMPETITOR COMPARISON (#11) -->
+      <div class="price">
+        <span class="p-now">£503</span>
+        <span class="p-was">£899</span>
+        <span class="p-save">Save 44%</span>
+      </div>
+      <div class="comp-row">
+        <span>Other retailers</span>
+        <span class="comp-retail">£979+</span>
+        <span class="comp-save">You save £476 vs high street</span>
+      </div>
+      <button class="price-info-btn" onclick="openPriceModal()">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        How this is priced
+      </button>
+
+      <!-- PAYMENT + OFFERS ABOVE CTA (#12) -->
+      <div class="paypanel-simple">
+        <div class="pps-offer">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          <span><b>Extra 10% off</b> - use code <code>PRIME10</code></span>
+          <button class="pps-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="pps-klarna">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          <span>Pay in 3 of <b>£167.67</b> interest-free</span>
+          <span class="klarna-tag">Klarna</span>
+        </div>
+        <div class="pps-methods">
+          <span class="pm-logo pm-shop">Shop Pay</span>
+          <span class="pm-logo pm-klarna">Klarna</span>
+          <span class="pm-logo pm-apple"> Pay</span>
+          <span class="pm-logo pm-gpay">G Pay</span>
+          <span class="pm-logo">VISA</span>
+          <span class="pm-logo">Mastercard</span>
+        </div>
+      </div>
+
+      <!-- CTA ROW -->
+      <div class="delivbar"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Pre-order · estimated arrival late September</div>
+      <div class="buy-row">
+        <button class="wishbtn" onclick="this.classList.toggle('on')" aria-label="Add to wishlist"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <button class="atc">Add to Basket - £503</button>
+      </div>
+
+      <!-- TRUST BADGES with popup (#13) - Secure replaced by Pay in 3 -->
+      <div class="trust4">
+        <div class="t4" onclick="openTrust('guarantee')" role="button" tabindex="0">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/></svg>
+          <span>365-Day Guarantee</span>
+        </div>
+        <div class="t4" onclick="openTrust('returns')" role="button" tabindex="0">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg>
+          <span>14-Day Returns</span>
+        </div>
+        <div class="t4" onclick="openTrust('bnpl')" role="button" tabindex="0">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          <span>Pay in 3 · Klarna</span>
+        </div>
+      </div>
+
+      <!-- DELIVERY RATE STRIP (#14) -->
+      <div class="delivstrip2">
+        <div class="dstrip-row">
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+          <div class="dstrip-info"><b>Standard UK delivery</b><small>Doorstep · 1-2 weeks after dispatch</small></div>
+          <span class="dstrip-tag">Free</span>
+        </div>
+        <div class="dstrip-row">
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+          <div class="dstrip-info"><b>2-Man delivery</b><small>Room of choice · arranged at booking</small></div>
+          <span class="dstrip-tag" style="color:var(--ink-2);background:var(--surface-2)">£14.95</span>
+        </div>
+      </div>
+
+      <!-- POSTCODE CHECK -->
+      <div class="conviction">
+        <div class="delivery-est">
+          <div class="de-head">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+            <span><b>Check your delivery date:</b></span>
+          </div>
+          <div class="de-form">
+            <input id="pcode" type="text" placeholder="Enter postcode" maxlength="8" aria-label="Postcode">
+            <button onclick="estDelivery()">Check</button>
+          </div>
+          <div class="de-result" id="deres"></div>
+        </div>
+      </div>
+
+      <div class="backorder">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px;color:var(--tan)"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg>
+        <span><b>Currently on pre-order.</b> Reserve now at the sale price - your order is confirmed and ships as soon as stock arrives.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST MODALS (#13) -->
+<div class="trust-modal" id="tm-guarantee" onclick="if(event.target===this)closeTrust('guarantee')">
+  <div class="tm-card">
+    <div class="tm-drag"></div>
+    <button class="tm-close" onclick="closeTrust('guarantee')">×</button>
+    <svg class="tm-icon" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/></svg>
+    <h4>365-Day Guarantee</h4>
+    <p>Any verifiable defect or deterioration within a year? We'll repair, replace or refund - your choice.</p>
+    <p>Covers manufacturing and material faults. Not accidental damage or normal wear.</p>
+  </div>
+</div>
+<div class="trust-modal" id="tm-returns" onclick="if(event.target===this)closeTrust('returns')">
+  <div class="tm-card">
+    <div class="tm-drag"></div>
+    <button class="tm-close" onclick="closeTrust('returns')">×</button>
+    <svg class="tm-icon" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg>
+    <h4>14-Day Returns</h4>
+    <p>Faulty or damaged on arrival? Collected free, no questions.</p>
+    <p>Changed your mind? Furniture returns carry a £25 collection fee. Email support@fableroom.com with your order number - refunds land within 7 days of receipt.</p>
+  </div>
+</div>
+<div class="trust-modal" id="tm-bnpl" onclick="if(event.target===this)closeTrust('bnpl')">
+  <div class="tm-card">
+    <div class="tm-drag"></div>
+    <button class="tm-close" onclick="closeTrust('bnpl')">×</button>
+    <svg class="tm-icon" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    <h4>Pay in 3 with Klarna</h4>
+    <p>Split the £503 into 3 interest-free payments of <b>£167.67</b>. Choose Klarna at checkout - no fees, no interest.</p>
+    <p>We also accept Shop Pay, Apple Pay, Google Pay, PayPal, and all major cards.</p>
+  </div>
+</div>
+
+<!-- PRICE BREAKDOWN MODAL (#19) -->
+<div class="price-modal" id="priceModal" onclick="if(event.target===this)closePriceModal()">
+  <div class="pm-card">
+    <div class="pm-drag"></div>
+    <button class="pm-close" onclick="closePriceModal()">×</button>
+    <h4>How your £503 is priced</h4>
+    <div class="pm-row"><span>Materials</span><b>£76.05</b></div>
+    <div class="pm-row"><span>Crafting &amp; labour</span><b>£86.92</b></div>
+    <div class="pm-row"><span>Packaging</span><b>£18.11</b></div>
+    <div class="pm-row"><span>Freight &amp; handling</span><b>£79.68</b></div>
+    <div class="pm-row"><span>Card fees</span><b>£10.86</b></div>
+    <div class="pm-row"><span>Duties &amp; taxes</span><b>£90.54</b></div>
+    <div class="pm-total"><span>Our total cost</span><span>£362.16</span></div>
+    <p class="pm-note">The same piece retails near <b>£979+</b> elsewhere. By selling direct - no importers, no showrooms - we pass 44% back to you while paying our makers fairly.</p>
+  </div>
+</div>
+
+<!-- STICKY SECTION NAV -->
+
       <div class="dimstrip" aria-label="Dimensions">
         <div class="ds">
           <span class="ds-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 3v18M12 3l-4 4M12 3l4 4M12 21l-4-4M12 21l4-4"/></svg></span>
@@ -1189,13 +1415,13 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
 <script>
 var IMGDIR="./assets-web/";
 var imgs=[
- {f:"TRCB00001A-CWWpi4Ek.jpg",a:"Styled in a living room"},
- {f:"TRBS00001A_20_1-CnTxCMhe.jpg",a:"Front view"},
- {f:"TRBS00001A_20_2-BrsUvFRX.jpg",a:"Galaxy finish - close detail"},
- {f:"TRBS00001A_20_3-BeRiV4vl.jpg",a:"Angled three-quarter view"},
- {f:"TRBS00001A_20_4-BfM2wrxo.jpg",a:"Doors open, interior shelving"},
- {f:"TRBS00001A_20_5-CdENtjvC.jpg",a:"Top corner detail"},
- {f:"TRCB00001A_2-BDhAzuVJ.jpg",a:"Scale - 160 cm reference"}
+ {f:"TRCB00001A-CWWpi4Ek.jpg",a:"Styled in a living room",label:"In Your Room"},
+ {f:"TRBS00001A_20_1-CnTxCMhe.jpg",a:"Front view",label:"Front"},
+ {f:"TRBS00001A_20_2-BrsUvFRX.jpg",a:"Galaxy finish detail",label:"Detail"},
+ {f:"TRBS00001A_20_3-BeRiV4vl.jpg",a:"Angled three-quarter view",label:"Angle"},
+ {f:"TRBS00001A_20_4-BfM2wrxo.jpg",a:"Doors open, interior shelving",label:"Interior"},
+ {f:"TRBS00001A_20_5-CdENtjvC.jpg",a:"Top corner detail",label:"Corner"},
+ {f:"TRCB00001A_2-BDhAzuVJ.jpg",a:"Scale - 160 cm reference",label:"Scale"}
 ];
 var gi=0,gimg=document.getElementById('gimg'),gthumbs=document.getElementById('gthumbs');
 imgs.forEach(function(o,i){
@@ -1204,13 +1430,13 @@ imgs.forEach(function(o,i){
   t.setAttribute('role','tab');
   t.setAttribute('aria-label',o.a);
   t.setAttribute('aria-selected',i===0?'true':'false');
-  t.innerHTML='<img src="'+IMGDIR+o.f+'" alt="" loading="lazy">';
+  t.innerHTML='<div class="th-img"><img src="'+IMGDIR+o.f+'" alt="" loading="lazy"></div><span class="th-lbl">'+o.label+'</span>';
   t.onclick=function(){show(i)};
   gthumbs.appendChild(t);
 });
 function show(i){
   gi=i;
-  /* reset Ken Burns by forcing reflow (#4) */
+  /* reset Ken Burns (#4) */
   gimg.style.animation='none';
   gimg.src=IMGDIR+imgs[i].f;
   gimg.alt=imgs[i].a;
@@ -1226,19 +1452,29 @@ function show(i){
   /* scroll active thumb into view */
   var atv=gthumbs.querySelectorAll('.thumb')[i];
   if(atv){atv.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'})}
+  /* auto-peek: when 3rd+ image selected, scroll strip to hint more exist (#2) */
+  if(i>=2 && i<imgs.length-1){
+    setTimeout(function(){
+      var next=gthumbs.querySelectorAll('.thumb')[i+1];
+      if(next){
+        var sr=gthumbs.getBoundingClientRect();
+        var nr=next.getBoundingClientRect();
+        if(nr.right>sr.right-8){gthumbs.scrollBy({left:48,behavior:'smooth'})}
+      }
+    },220);
+  }
 }
 var sx=0;gimg.parentElement.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
 gimg.parentElement.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){show(dx<0?Math.min(gi+1,imgs.length-1):Math.max(gi-1,0))}},{passive:true});
 
-/* dynamic rotating badge (#5) */
+/* dynamic rotating badge (#5) - original tags */
 (function(){
   var badge=document.getElementById('dynbadge');
   if(!badge)return;
   var tags=[
-    {text:'Pre-Order · Late Sept',cls:'b-pre'},
-    {text:'Save 44% - Direct Price',cls:'b-sale'},
-    {text:'Hand-applied patina',cls:'b-best'},
-    {text:'One of a kind piece',cls:'b-best'}
+    {text:'Pre-Order',cls:'b-pre'},
+    {text:'Best Seller',cls:'b-best'},
+    {text:'20% Off',cls:'b-sale'}
   ];
   var ti=0;
   function cycle(){
@@ -1253,17 +1489,25 @@ gimg.parentElement.addEventListener('touchend',function(e){var dx=e.changedTouch
   setInterval(cycle,3400);
 })();
 
-/* thumb strip scroll arrow hide (#15) */
+/* ts-more pill visibility (#15) */
 (function(){
-  var ts=gthumbs,arrow=document.getElementById('tsarrow');
-  if(!ts||!arrow)return;
+  var ts=gthumbs,pill=document.getElementById('tsmore');
+  if(!ts||!pill)return;
   function check(){
-    var atEnd=ts.scrollLeft+ts.clientWidth>=ts.scrollWidth-6;
-    arrow.classList.toggle('hidden',atEnd);
+    var atEnd=ts.scrollLeft+ts.clientWidth>=ts.scrollWidth-10;
+    pill.classList.toggle('hidden',atEnd);
   }
   ts.addEventListener('scroll',check,{passive:true});
-  setTimeout(check,300);
+  setTimeout(check,400);
 })();
+
+/* trust badge modals (#13) */
+function openTrust(key){document.getElementById('tm-'+key).classList.add('show');document.body.style.overflow='hidden'}
+function closeTrust(key){document.getElementById('tm-'+key).classList.remove('show');document.body.style.overflow=''}
+
+/* price breakdown modal (#19) */
+function openPriceModal(){document.getElementById('priceModal').classList.add('show');document.body.style.overflow='hidden'}
+function closePriceModal(){document.getElementById('priceModal').classList.remove('show');document.body.style.overflow=''}
 
 function qty(d){var el=document.getElementById('qtyv');el.value=Math.max(1,Math.min(10,(parseInt(el.value)||1)+d))}
 function copyCode(b){if(navigator.clipboard)navigator.clipboard.writeText('PRIME10');var o=b.textContent;b.textContent='Copied ✓';setTimeout(function(){b.textContent=o},1600)}
