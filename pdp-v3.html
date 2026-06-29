@@ -38,7 +38,13 @@ body{font-family:var(--ff-b);background:var(--bg);color:var(--ink);line-height:1
 .loader__bar i{position:absolute;inset:0;background:var(--bronze);transform:scaleX(0);transform-origin:left;animation:loadbar 1.2s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes loadbar{to{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){.loader__bar i{animation:none;transform:scaleX(1)}}
-img{display:block;max-width:100%}
+/* Ken Burns auto-zoom on active gallery image (#4) */
+@keyframes kb{from{transform:scale(1) translate(0,0)} to{transform:scale(1.08) translate(-1.2%,-0.8%)}}
+.g-main img{width:100%;height:100%;object-fit:cover;animation:kb 7s ease-in-out alternate infinite;will-change:transform;transform-origin:center center}
+@media(prefers-reduced-motion:reduce){.g-main img{animation:none}}
+/* Dynamic rotating badge fade (#5) */
+.b-dyn{transition:opacity .28s ease}
+.b-dyn.fade{opacity:0}
 a{color:inherit}
 button{font-family:inherit;cursor:pointer}
 /* headings - the ONLY serif elements (matches brand h1–h6) */
@@ -81,18 +87,17 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 .b-best{background:var(--heading);color:#f3ede4}
 .b-pre{background:#fff;color:var(--bronze);border:1px solid var(--bronze)}
 
-/* ANGLE TABS - now BELOW the hero image; double as the position indicator */
-.angle-tabs{display:flex;gap:6px;margin-top:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.angle-tabs::-webkit-scrollbar{display:none}
-.angle-tab{flex-shrink:0;min-height:38px;padding:8px 15px;border:1px solid var(--line);background:var(--surface);border-radius:100px;font-size:12.5px;font-weight:600;color:var(--ink-2);white-space:nowrap}
-.angle-tab.active{background:var(--heading);color:#f3ede4;border-color:var(--heading)}
-
-/* THUMBNAIL STRIP - replaces dots on mobile (ref-inspired) */
-.thumbs{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;gap:7px;padding:40px 10px 11px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:linear-gradient(to top,rgba(18,13,8,.62),rgba(18,13,8,0))}
+/* THUMBNAIL STRIP - below hero; image IS the label (#2, #15) */
+.thumbstrip{position:relative;margin-top:8px}
+.thumbs{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
 .thumbs::-webkit-scrollbar{display:none}
-.thumb{flex:0 0 50px;height:50px;border-radius:6px;overflow:hidden;border:2px solid rgba(255,255,255,.45);opacity:.72;background:rgba(255,255,255,.12);padding:0;transition:opacity .2s,border-color .2s}
-.thumb.active{opacity:1;border-color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.thumb{flex:0 0 70px;height:54px;border-radius:6px;overflow:hidden;border:2px solid var(--line);background:var(--surface-2);padding:0;cursor:pointer;opacity:.68;transition:opacity .2s,border-color .2s,box-shadow .2s}
+.thumb.active{opacity:1;border-color:var(--bronze);box-shadow:0 0 0 1px var(--bronze)}
+.thumb:hover:not(.active){opacity:1;border-color:var(--ink-3)}
 .thumb img{width:100%;height:100%;object-fit:cover}
+/* scroll indicator arrow (#15) */
+.ts-arrow{position:absolute;right:0;top:0;bottom:0;width:32px;background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,.96) 55%);display:flex;align-items:center;justify-content:flex-end;padding-right:3px;pointer-events:none;transition:opacity .25s}
+.ts-arrow.hidden{opacity:0}
 
 /* PRODUCT INFO (order tuned so title+price+CTA hit first fold) */
 .pinfo{padding-top:2px}
@@ -553,9 +558,9 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
   .hero{display:grid;grid-template-columns:1fr 440px;gap:48px;align-items:start;padding-top:8px}
   .gallery{position:sticky;top:104px}
   .g-main{height:auto;max-height:none;aspect-ratio:1/1;min-height:0}
-  .thumbs{padding:48px 12px 12px}
-  .thumb{flex:0 0 60px;height:60px}
-  .thumb:hover{opacity:1;border-color:#fff}
+  .thumbs{padding:0}
+  .thumb{flex:0 0 80px;height:62px}
+  .thumb:hover:not(.active){opacity:1;border-color:var(--ink-3)}
   .pinfo{position:sticky;top:84px}
   .title{font-size:38px}.p-now{font-size:36px}
 
@@ -631,20 +636,14 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
     <div class="gallery">
       <div class="g-main">
         <div class="g-badges">
-          <span class="badge b-sale">20% Off</span>
-          <span class="badge b-best">Best Seller</span>
-          <span class="badge b-pre">Pre-Order</span>
+          <span class="badge b-pre b-dyn" id="dynbadge">Pre-Order · Late Sept</span>
         </div>
         <img id="gimg" src="./assets-web/TRCB00001A-CWWpi4Ek.jpg" alt="Astra Two Door Cabinet styled in a living room">
-        <!-- THUMBNAIL STRIP - overlaid on the lower hero image -->
-        <div class="thumbs" id="gthumbs" role="tablist" aria-label="Gallery thumbnails"></div>
       </div>
-      <!-- ANGLE TABS - below the hero image -->
-      <div class="angle-tabs" role="tablist" aria-label="Views">
-        <button class="angle-tab active" onclick="setAngle(this,0)">In Your Room</button>
-        <button class="angle-tab" onclick="setAngle(this,1)">Front</button>
-        <button class="angle-tab" onclick="setAngle(this,4)">Interior</button>
-        <button class="angle-tab" onclick="setAngle(this,2)">Detail</button>
+      <!-- THUMBNAIL STRIP - below hero; each image is its own label (#2, #3, #15) -->
+      <div class="thumbstrip">
+        <div class="thumbs" id="gthumbs" role="tablist" aria-label="Gallery views"></div>
+        <div class="ts-arrow" id="tsarrow" aria-hidden="true"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
       </div>
     </div>
 
@@ -1191,26 +1190,80 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
 var IMGDIR="./assets-web/";
 var imgs=[
  {f:"TRCB00001A-CWWpi4Ek.jpg",a:"Styled in a living room"},
- {f:"TRBS00001A_20_1-CnTxCMhe.jpg",a:"Front studio view"},
- {f:"TRBS00001A_20_2-BrsUvFRX.jpg",a:"Galaxy finish detail"},
- {f:"TRBS00001A_20_3-BeRiV4vl.jpg",a:"Angled view"},
+ {f:"TRBS00001A_20_1-CnTxCMhe.jpg",a:"Front view"},
+ {f:"TRBS00001A_20_2-BrsUvFRX.jpg",a:"Galaxy finish - close detail"},
+ {f:"TRBS00001A_20_3-BeRiV4vl.jpg",a:"Angled three-quarter view"},
  {f:"TRBS00001A_20_4-BfM2wrxo.jpg",a:"Doors open, interior shelving"},
- {f:"TRBS00001A_20_5-CdENtjvC.jpg",a:"Top corner detail"}
+ {f:"TRBS00001A_20_5-CdENtjvC.jpg",a:"Top corner detail"},
+ {f:"TRCB00001A_2-BDhAzuVJ.jpg",a:"Scale - 160 cm reference"}
 ];
 var gi=0,gimg=document.getElementById('gimg'),gthumbs=document.getElementById('gthumbs');
 imgs.forEach(function(o,i){
-  var t=document.createElement('button');t.className='thumb'+(i===0?' active':'');t.setAttribute('aria-label','View image '+(i+1));
-  t.innerHTML='<img src="'+IMGDIR+o.f+'" alt="">';t.onclick=function(){show(i)};gthumbs.appendChild(t);
+  var t=document.createElement('button');
+  t.className='thumb'+(i===0?' active':'');
+  t.setAttribute('role','tab');
+  t.setAttribute('aria-label',o.a);
+  t.setAttribute('aria-selected',i===0?'true':'false');
+  t.innerHTML='<img src="'+IMGDIR+o.f+'" alt="" loading="lazy">';
+  t.onclick=function(){show(i)};
+  gthumbs.appendChild(t);
 });
 function show(i){
-  gi=i;gimg.src=IMGDIR+imgs[i].f;gimg.alt=imgs[i].a;
-  document.querySelectorAll('.thumb').forEach(function(d,k){d.classList.toggle('active',k===i)});
-  document.querySelectorAll('.angle-tab').forEach(function(t){t.classList.remove('active')});
-  var gb=document.querySelector('.g-badges');if(gb){gb.classList.toggle('dim',i!==0)}
+  gi=i;
+  /* reset Ken Burns by forcing reflow (#4) */
+  gimg.style.animation='none';
+  gimg.src=IMGDIR+imgs[i].f;
+  gimg.alt=imgs[i].a;
+  gimg.getBoundingClientRect();
+  gimg.style.animation='';
+  document.querySelectorAll('.thumb').forEach(function(d,k){
+    var on=k===i;
+    d.classList.toggle('active',on);
+    d.setAttribute('aria-selected',on?'true':'false');
+  });
+  var gb=document.querySelector('.g-badges');
+  if(gb){gb.classList.toggle('dim',i!==0)}
+  /* scroll active thumb into view */
+  var atv=gthumbs.querySelectorAll('.thumb')[i];
+  if(atv){atv.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'})}
 }
-function setAngle(btn,i){show(i);document.querySelectorAll('.angle-tab').forEach(function(t){t.classList.remove('active')});btn.classList.add('active');}
 var sx=0;gimg.parentElement.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
 gimg.parentElement.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){show(dx<0?Math.min(gi+1,imgs.length-1):Math.max(gi-1,0))}},{passive:true});
+
+/* dynamic rotating badge (#5) */
+(function(){
+  var badge=document.getElementById('dynbadge');
+  if(!badge)return;
+  var tags=[
+    {text:'Pre-Order · Late Sept',cls:'b-pre'},
+    {text:'Save 44% - Direct Price',cls:'b-sale'},
+    {text:'Hand-applied patina',cls:'b-best'},
+    {text:'One of a kind piece',cls:'b-best'}
+  ];
+  var ti=0;
+  function cycle(){
+    badge.classList.add('fade');
+    setTimeout(function(){
+      ti=(ti+1)%tags.length;
+      badge.className='badge b-dyn '+tags[ti].cls;
+      badge.textContent=tags[ti].text;
+      badge.classList.remove('fade');
+    },280);
+  }
+  setInterval(cycle,3400);
+})();
+
+/* thumb strip scroll arrow hide (#15) */
+(function(){
+  var ts=gthumbs,arrow=document.getElementById('tsarrow');
+  if(!ts||!arrow)return;
+  function check(){
+    var atEnd=ts.scrollLeft+ts.clientWidth>=ts.scrollWidth-6;
+    arrow.classList.toggle('hidden',atEnd);
+  }
+  ts.addEventListener('scroll',check,{passive:true});
+  setTimeout(check,300);
+})();
 
 function qty(d){var el=document.getElementById('qtyv');el.value=Math.max(1,Math.min(10,(parseInt(el.value)||1)+d))}
 function copyCode(b){if(navigator.clipboard)navigator.clipboard.writeText('PRIME10');var o=b.textContent;b.textContent='Copied ✓';setTimeout(function(){b.textContent=o},1600)}
