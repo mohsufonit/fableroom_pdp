@@ -15,7 +15,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --bg:#f5f0e8;--surface:#fff;--surface-2:#f3ede1;
+  --bg:#ffffff;--surface:#fff;--surface-2:#f6f2ec;--wood:url('./assets-web/cta-wood.png');
   --ink:#2c2c2c;--ink-2:#505050;--ink-3:#736c58;
   --heading:#31270d;--bronze:#b77e45;--bronze-hi:#a06b35;--tan:#c87b01;
   --line:#e4ddcf;--line-2:#ece6da;
@@ -26,7 +26,7 @@
   --radius:6px;
 }
 html{font-size:16px;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{font-family:var(--ff-b);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{display:block;max-width:100%}
 a{color:inherit}
 button{font-family:inherit;cursor:pointer}
@@ -46,7 +46,7 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 @media(prefers-reduced-motion:reduce){.announce-track{animation:none}}
 
 /* ===== HEADER ===== */
-.header{position:sticky;top:38px;z-index:60;background:rgba(245,240,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.header{position:sticky;top:38px;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .header-in{display:flex;align-items:center;justify-content:space-between;height:54px;max-width:1280px;margin:0 auto;padding:0 16px}
 .logo{font-family:var(--ff-d);font-size:21px;letter-spacing:.24em;text-transform:uppercase;color:var(--heading);text-decoration:none}
 .h-icons{display:flex;gap:2px}
@@ -251,11 +251,49 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 .backorder b{color:var(--heading)}
 
 /* ===== STICKY SECTION NAV ===== */
-.secnav{position:sticky;top:92px;z-index:50;background:rgba(245,240,232,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:26px}
+.secnav{position:sticky;top:92px;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:26px}
 .secnav-in{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:1280px;margin:0 auto;padding:0 12px}
 .secnav-in::-webkit-scrollbar{display:none}
 .secnav a{flex-shrink:0;min-height:46px;display:flex;align-items:center;padding:0 13px;font-size:12.5px;font-weight:600;color:var(--ink-2);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
 .secnav a.active{color:var(--bronze);border-bottom-color:var(--bronze)}
+
+/* WOOD-TEXTURE CTAs (replaces flat brown) */
+.atc,.sb-btn{background-color:#5a3d1e;background-image:linear-gradient(rgba(74,48,22,.28),rgba(40,25,10,.5)),var(--wood);background-size:cover;background-position:center;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.atc:hover,.sb-btn:hover{background-image:linear-gradient(rgba(50,32,14,.42),rgba(28,17,6,.6)),var(--wood)}
+
+/* ============ PARALLAX STORY (The Finish) ============ */
+.parallax-story{position:relative;min-height:170vh;background:#1b1408;color:#f2ece3;overflow:clip;isolation:isolate;width:100vw;margin-left:calc(50% - 50vw)}
+.parallax-story::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(22,16,7,.88),rgba(22,16,7,.72) 42%,rgba(22,16,7,.95)),url('./assets-web/TRBS00001A_20_2-BrsUvFRX.jpg') center/cover;filter:saturate(.95) contrast(1.05)}
+.parallax-story::after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 54% at 50% 38%,rgba(183,126,69,.28),transparent 62%);pointer-events:none}
+.parallax-pin{position:sticky;top:0;min-height:100svh;display:grid;place-items:center;padding:78px 16px 90px}
+.parallax-shell{width:min(1180px,100%);display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+.parallax-copy{position:relative;z-index:5;max-width:460px}
+.parallax-copy .eyebrow{color:#e8c9a4}
+.parallax-copy h2{font-family:var(--ff-d);font-weight:400;color:#fff;font-size:clamp(34px,9vw,62px);line-height:.98;letter-spacing:-.015em;margin:14px 0 16px}
+.parallax-copy p{font-size:15px;line-height:1.7;opacity:.85;max-width:44ch}
+.parallax-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(232,201,164,.24)}
+.parallax-meta span{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#d7c0a4}
+.parallax-scene{position:relative;min-height:430px;perspective:1200px;transform:translateZ(0)}
+.px-card{position:absolute;overflow:hidden;border-radius:8px;border:1px solid rgba(232,201,164,.18);box-shadow:0 28px 64px rgba(0,0,0,.42);will-change:transform;backface-visibility:hidden}
+.px-card img{width:100%;height:100%;object-fit:cover}
+.px-card--hero{width:min(290px,62vw);aspect-ratio:3/4;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
+.px-card--left{width:148px;aspect-ratio:4/5;left:0;top:6%;z-index:2}
+.px-card--right{width:140px;aspect-ratio:1;right:0;bottom:12%;z-index:4}
+.px-disk{position:absolute;border-radius:50%;border:1px solid rgba(232,201,164,.3);will-change:transform}
+.px-disk--one{width:140px;height:140px;right:6%;top:2%;background:rgba(183,126,69,.08)}
+.px-disk--two{width:84px;height:84px;left:4%;bottom:4%;background:rgba(183,126,69,.06)}
+.px-label{position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);max-width:230px;text-align:center;font-size:11.5px;line-height:1.5;color:#e8d9c4;background:rgba(22,16,7,.5);border:1px solid rgba(232,201,164,.2);border-radius:8px;padding:10px 14px;backdrop-filter:blur(3px);z-index:6}
+.px-label small{display:block;margin-top:5px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#c7a96e}
+@media(min-width:820px){
+  .parallax-shell{grid-template-columns:.85fr 1.15fr;gap:54px}
+  .parallax-scene{min-height:620px}
+  .parallax-story::before{background-attachment:scroll,fixed}
+  .px-card--hero{width:380px}
+  .px-card--left{width:230px;left:2%;top:12%}
+  .px-card--right{width:208px;right:1%;bottom:8%}
+  .px-disk--one{width:220px;height:220px}
+}
+@media(prefers-reduced-motion:reduce){.px-card,.px-disk,.px-label{transform:none!important}.px-card--hero{transform:translate(-50%,-50%)!important}}
 
 /* ============================================================
    A+ CONTENT  (everything from Dimensions down)
@@ -732,20 +770,25 @@ footer{background:var(--heading);color:rgba(239,231,218,.7)}
 <!-- ============ A+ CONTENT (from here down) ============ -->
 <div class="aplus">
 
-  <!-- A+ 2 · THE FINISH (full-bleed macro hero) -->
-  <section id="finish" class="ap">
-    <div class="ap-hero">
-      <img src="./assets-web/TRBS00001A_20_2-BrsUvFRX.jpg" alt="Macro detail of the rust galaxy patina">
-      <div class="ap-hero-cap">
-        <span class="eyebrow">The finish</span>
-        <h3>No two are ever alike</h3>
-        <p>A luminous, galaxy-inspired patina, hand-applied to solid iron. It shifts from molten bronze to deep, starry black as the light moves across it.</p>
+  <!-- A+ · THE FINISH (parallax story) -->
+  <section id="finish" class="parallax-story">
+    <div class="parallax-pin">
+      <div class="parallax-shell">
+        <div class="parallax-copy">
+          <span class="eyebrow">The finish</span>
+          <h2>No two are<br>ever alike.</h2>
+          <p>A luminous, galaxy-inspired patina, hand-applied to solid iron. As the page moves, the finish separates into soft layers - the way it catches and shifts the light in a real room.</p>
+          <div class="parallax-meta"><span>Hand-applied</span><span>One-of-a-kind</span><span>Solid iron</span></div>
+        </div>
+        <div class="parallax-scene" aria-label="Layered views of the Astra galaxy finish">
+          <span class="px-disk px-disk--one" data-depth="-0.08"></span>
+          <span class="px-disk px-disk--two" data-depth="0.14"></span>
+          <figure class="px-card px-card--left" data-depth="0.18" data-rotate="-4"><img src="./assets-web/TRCB00001A_2-BDhAzuVJ.jpg" alt="Astra cabinet front, galaxy finish"></figure>
+          <figure class="px-card px-card--hero" data-depth="-0.12" data-rotate="2"><img src="./assets-web/TRBS00001A_20_2-BrsUvFRX.jpg" alt="Macro of the hand-applied galaxy patina"></figure>
+          <figure class="px-card px-card--right" data-depth="0.28" data-rotate="6"><img src="./assets-web/TRBS00001A_20_3-BeRiV4vl.jpg" alt="Detail of the rust galaxy finish"></figure>
+          <div class="px-label" data-depth="-0.2">Light moves across the patina before the room does.<small>Scroll to reveal</small></div>
+        </div>
       </div>
-    </div>
-    <div class="principles">
-      <div class="principle"><b>Hand-applied</b><span>Each finish is worked by hand, never machine-printed</span></div>
-      <div class="principle"><b>One-of-a-kind</b><span>No two cabinets share the same patina pattern</span></div>
-      <div class="principle"><b>Heirloom iron</b><span>Solid, weighty construction built to outlast trends</span></div>
     </div>
   </section>
 
@@ -1167,6 +1210,35 @@ window.addEventListener('load',onScroll);
 onScroll();
 
 function fbtCalc(){var t=0,n=0;document.querySelectorAll('.fbt-item input:checked').forEach(function(c){t+=+c.dataset.price;n++});document.getElementById('fbtTotal').textContent='£'+t.toLocaleString();var cta=document.getElementById('fbtCta');cta.textContent='Add '+n+' item'+(n!==1?'s':'')+' to basket';document.getElementById('fbtSave').style.display=n>=2?'inline-block':'none'}
+
+/* lightweight scroll parallax for [data-depth] layers (reduced-motion safe) */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var els=[].slice.call(document.querySelectorAll('[data-depth]'));
+  if(reduce||!els.length)return;
+  var coarse=matchMedia('(pointer:coarse)').matches,ticking=false;
+  function frame(){
+    var vh=innerHeight;
+    els.forEach(function(el){
+      var story=el.closest('.parallax-story')||el;
+      var r=story.getBoundingClientRect();
+      if(r.bottom<-160||r.top>vh+160)return;
+      var progress=Math.max(-1,Math.min(1,(r.top+r.height/2-vh/2)/vh));
+      var depth=(parseFloat(el.dataset.depth)||0)*(coarse?0.6:1);
+      var rot=parseFloat(el.dataset.rotate)||0;
+      var y=(-progress*depth*vh*1.1).toFixed(1);
+      var x=(progress*depth*32).toFixed(1);
+      var rr=(rot+progress*depth*9).toFixed(2);
+      var base=el.classList.contains('px-card--hero')?'translate(-50%,-50%) ':'';
+      el.style.transform=base+'translate3d('+x+'px,'+y+'px,0) rotate('+rr+'deg)';
+    });
+    ticking=false;
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(frame);}}
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll,{passive:true});
+  frame();
+})();
 
 var navlinks=[].slice.call(document.querySelectorAll('.secnav a'));
 var secs=navlinks.map(function(a){return document.querySelector(a.getAttribute('href'))});
