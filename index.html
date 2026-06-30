@@ -161,7 +161,8 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 .announce{position:sticky;top:0;z-index:61;background:var(--heading);color:#f3ede4;font-size:12.5px;font-weight:500;text-align:center;height:38px;overflow:hidden}
 .announce-track{display:flex;flex-direction:column;animation:rot 9s infinite}
 .announce-item{height:38px;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
-.announce .tp{color:var(--green-tp);font-weight:700}
+.announce .tp{color:var(--green-tp);font-weight:700;display:inline-flex;align-items:center}
+.tp-logo-img{height:13px;width:auto;display:block}
 .announce code{background:rgba(243,237,228,.14);padding:2px 8px;border-radius:3px;letter-spacing:.08em;font-weight:700}
 @keyframes rot{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-38px)}66%,94%{transform:translateY(-76px)}100%{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.announce-track{animation:none}}
@@ -259,6 +260,7 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 .tp-badge-inline{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--ink-2);text-decoration:none;background:#f0fbf7;border:1px solid rgba(0,182,122,.25);padding:3px 10px 3px 8px;border-radius:100px;flex-shrink:0;white-space:nowrap}
 .tp-badge-inline b{color:#00b67a;font-weight:700}
 .tp-badge-inline:hover{background:#e3f8f0}
+.tp-logo-img-inline{height:11px;width:auto;display:inline-block;vertical-align:-1px;margin-left:3px}
 
 .price{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0 16px}
 .p-now{font-size:33px;font-weight:700;color:var(--heading);line-height:1;letter-spacing:-.01em} /* HK Grotesk (brand) */
@@ -448,6 +450,8 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 .px-card{position:absolute;overflow:hidden;border-radius:8px;border:1px solid rgba(232,201,164,.18);box-shadow:0 28px 64px rgba(0,0,0,.42);will-change:transform;backface-visibility:hidden}
 .px-card img{width:100%;height:100%;object-fit:cover}
 .px-card--hero{width:min(290px,62vw);aspect-ratio:3/4;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
+.px-card--left{width:min(150px,34vw);aspect-ratio:3/4;left:8%;top:20%;z-index:2}
+.px-card--right{width:min(150px,34vw);aspect-ratio:3/4;right:8%;bottom:18%;z-index:2}
 .px-disk{position:absolute;border-radius:50%;border:1px solid rgba(232,201,164,.3);will-change:transform}
 .px-disk--one{width:140px;height:140px;right:6%;top:2%;background:rgba(183,126,69,.08)}
 .px-disk--two{width:84px;height:84px;left:4%;bottom:4%;background:rgba(183,126,69,.06)}
@@ -458,6 +462,8 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
   .parallax-scene{min-height:620px}
   .parallax-story::before{background-attachment:scroll,fixed}
   .px-card--hero{width:380px}
+  .px-card--left{width:170px;left:0%;top:14%}
+  .px-card--right{width:170px;right:0%;bottom:12%}
   .px-disk--one{width:220px;height:220px}
 }
 @media(prefers-reduced-motion:reduce){.px-card,.px-disk,.px-label{transform:none!important}.px-card--hero{transform:translate(-50%,-50%)!important}}
@@ -557,8 +563,10 @@ h1,h2,h3,h4{font-family:var(--ff-d);color:var(--heading);font-weight:400;line-he
 .revsum-tp-star svg{width:16px;height:16px;fill:#fff}
 .revsum-tp-body{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1 1 140px}
 .revsum-tp-body .tp-title{font-size:15px;font-weight:700;color:var(--ink);display:block;line-height:1.3}
+.tp-logo-img-title{height:17px;width:auto;display:block}
 .revsum-tp-body .tp-sub{font-size:12.5px;color:var(--ink-3);line-height:1.4}
-.revsum-tp-cta{flex-shrink:0;font-size:12px;font-weight:700;color:#00875a;text-decoration:none;white-space:nowrap;border:1.5px solid #00b67a;border-radius:100px;padding:8px 16px;margin-left:auto}
+.revsum-tp-cta{flex-shrink:0;font-size:12px;font-weight:700;color:#00875a;text-decoration:none;white-space:nowrap;border:1.5px solid #00b67a;border-radius:100px;padding:8px 16px;margin-left:auto;display:inline-flex;align-items:center}
+.tp-logo-img-cta{height:13px;width:auto;display:block}
 .revsum-tp-cta:hover{background:#00b67a;color:#fff}
 @media(min-width:820px){
   .revsummary{grid-template-columns:1.1fr 1fr;gap:32px;padding:32px}
@@ -948,7 +956,7 @@ footer{background:var(--ink-3);color:rgba(255,255,255,.78)}
 <!-- ANNOUNCEMENT -->
 <div class="announce" aria-label="Store announcements">
   <div class="announce-track">
-    <div class="announce-item"><span class="tp">★ Trustpilot</span> Rated Excellent by 230+ homes</div>
+    <div class="announce-item"><span class="tp"><img src="./assets-web/trustpilot-logo.png" alt="Trustpilot" class="tp-logo-img"></span> Rated Excellent by 230+ homes</div>
     <div class="announce-item">Extra 10% off with code <code>PRIME10</code></div>
     <div class="announce-item">Summer Sale - £75 off orders over £749</div>
   </div>
@@ -1044,8 +1052,7 @@ footer{background:var(--ink-3);color:rgba(255,255,255,.78)}
         <span class="rate-badge"><span class="rs1">★</span> 5.0</span>
         <a href="#reviews" class="r-link">4 reviews</a>
         <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener" class="tp-badge-inline">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="#00b67a"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <b>4.7</b> on Trustpilot
+          <b>4.7</b> on <img src="./assets-web/trustpilot-logo.png" alt="Trustpilot" class="tp-logo-img-inline">
         </a>
       </div>
 
@@ -1275,7 +1282,9 @@ footer{background:var(--ink-3);color:rgba(255,255,255,.78)}
         <div class="parallax-scene" aria-label="Layered views of the Astra galaxy finish">
           <span class="px-disk px-disk--one" data-depth="-0.08"></span>
           <span class="px-disk px-disk--two" data-depth="0.14"></span>
+          <figure class="px-card px-card--left" data-depth="0.1" data-rotate="-3"><img src="./assets-web/cabinet-in-living-room.jpg" alt="Astra cabinet styled in a living room"></figure>
           <figure class="px-card px-card--hero" data-depth="-0.12" data-rotate="2"><img src="./assets-web/cabinet-patina-closeup.jpg" alt="Macro of the hand-applied galaxy patina"></figure>
+          <figure class="px-card px-card--right" data-depth="0.18" data-rotate="3"><img src="./assets-web/cabinet-three-quarter-view.jpg" alt="Three-quarter view of the Astra cabinet"></figure>
           <div class="px-label" data-depth="-0.2">Light moves across the patina before the room does.</div>
         </div>
       </div>
@@ -1660,13 +1669,13 @@ footer{background:var(--ink-3);color:rgba(255,255,255,.78)}
             <span class="revsum-tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
             <span class="revsum-tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
             <span class="revsum-tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-            <span class="revsum-tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+            <span class="revsum-tp-star" style="background:linear-gradient(90deg,#00b67a 70%,var(--line-2) 70%)"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
           </span>
           <span class="revsum-tp-body">
-            <span class="tp-title">Trustpilot</span>
-            <span class="tp-sub">Rated 5.0 by 230+ homes</span>
+            <span class="tp-title"><img src="./assets-web/trustpilot-logo.png" alt="Trustpilot" class="tp-logo-img-title"></span>
+            <span class="tp-sub">Rated 4.7 by ~1000 people</span>
           </span>
-          <span class="revsum-tp-cta">★ Trustpilot</span>
+          <span class="revsum-tp-cta"><img src="./assets-web/trustpilot-logo.png" alt="Trustpilot" class="tp-logo-img-cta"></span>
         </a>
       </div>
     </div>
